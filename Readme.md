@@ -4,11 +4,11 @@
 - will be used for the final `implementation` if member agreed.
 
 ## Members 👨‍💻
-- Guy Cameron
-- Joseph Kettles
-- Maya Peretz
-- Zin Lin Htun
-- Patrick Nwagulu
+- [Guy Cameron](https://github.com/Guy-GC)
+- [Joseph Kettles](https://github.com/Joketts)
+- [Maya Peretz](https://github.com/mayafp99)
+- [Zin Lin Htun](https://github.com/zin-lin)
+- [Patrick Nwagulu](https://github.com/patrick12nc)
 
 ## University 🏫
 - `Edinburgh Napier University`
