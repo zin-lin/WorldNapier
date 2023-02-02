@@ -8,6 +8,7 @@
 - Joseph Kettles
 - Maya Peretz
 - Zin Lin Htun
+- Patrick Nwagulu
 
 ## University 🏫
 - `Edinburgh Napier University`
