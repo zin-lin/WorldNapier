@@ -13,6 +13,9 @@
 ## University 🏫
 - `Edinburgh Napier University`
 
+#Licence
+- [![LICENSE](https://img.shields.io/github/license/zin-lin/TheWorld.svg?style=flat-square)](https://github.com/zin-lin/WorldNapier/blob/main/LICENCE)
+
 ## Change Log
 - Added LICENCE `(14:36 2023/02/02)`
 - Added project config `(14:30 2023/02/02)`
