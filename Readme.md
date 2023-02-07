@@ -13,8 +13,8 @@
 ## University 🏫
 - `Edinburgh Napier University`
 
-## Licence
-- Licence [![LICENSE](https://img.shields.io/github/license/zin-lin/TheWorld.svg?style=flat-square)](https://github.com/zin-lin/WorldNapier/blob/main/LICENCE)
+## License
+- License [![LICENSE](https://img.shields.io/github/license/zin-lin/WorldNapier.svg?style=flat-square)](https://github.com/zin-lin/WorldNapier/blob/master/LICENSE)
 
 ## Status
 - Master Branch ![GitHub Workflow Status Master](https://img.shields.io/github/actions/workflow/status/zin-lin/WorldNapier/main.yml)
