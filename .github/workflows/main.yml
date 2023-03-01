@@ -2,7 +2,6 @@ name: Group Project Workflow
 on: push
 
 jobs:
-jobs:
   build:
     name: Hello world action
     runs-on: ubuntu-20.04
