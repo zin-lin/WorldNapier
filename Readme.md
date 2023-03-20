@@ -20,7 +20,7 @@
 - Master Branch ![GitHub Workflow Status Master](https://img.shields.io/github/actions/workflow/status/zin-lin/WorldNapier/main.yml)
 - Develop Branch ![GitHub Workflow Status Master](https://img.shields.io/github/actions/workflow/status/zin-lin/WorldNapier/main.yml)
 - Release [![Releases](https://img.shields.io/github/release/zin-lin/WorldNapier/all.svg?style=flat-square)](https://github.com/zin-lin/WorldNapier/releases)
-- Coverage [![codecov](https://codecov.io/gh/zin-lin/WorldNapier/branch/master/graph/badge.svg?token=FXPE08XSK1)](https://codecov.io/gh/zin-lin/WorldNapier)
+- Coverage [![codecov](https://codecov.io/gh/zin-lin/WorldNapier/branch/feature/test/graph/badge.svg?token=FXPE08XSK1)](https://codecov.io/gh/zin-lin/WorldNapier)
 
 ## Change Log
 - Added 6 Reports `(00:03 2023/03/02)`
