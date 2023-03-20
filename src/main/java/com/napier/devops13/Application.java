@@ -31,18 +31,7 @@ public class Application {
         app.printInFormat("Caribbean",connection.getPopulationOfRegion("Caribbean"));
         app.printInFormat("Dubai",connection.getPopulationOfCityID("64"));
         app.printInFormat("Limburgh", connection.getPopulationOfDistrcit("Limburg"));
-        System.out.print("The World's Population :: ");
-        System.out.println(connection.getWorldPopulation());
-        System.out.print("Great Britain's Population :: ");
-        System.out.println(connection.getPopulationOfCountry("GBR"));
-        System.out.print("Africa's Population :: ");
-        System.out.println(connection.getPopulationOfContinent("Africa"));
-        System.out.print("Caribbean's Population :: ");
-        System.out.println(connection.getPopulationOfRegion("Caribbean"));
-        System.out.print("Dubai's Population :: ");
-        System.out.println(connection.getPopulationOfCityID("64"));
-        System.out.print("Limburgh's Population :: ");
-        System.out.println(connection.getPopulationOfDistrcit("Limburg"));
+
         connection.disconnect();
     }
 }
