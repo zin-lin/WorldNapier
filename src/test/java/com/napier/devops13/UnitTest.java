@@ -22,7 +22,7 @@ public class UnitTest {
     }
 
     /**
-     * application buil test
+     * application build test
      */
     @Test
     public void testConnection() {
@@ -34,6 +34,17 @@ public class UnitTest {
      */
     @Test
     void testPrint() {
-        app.printInFormat(null , null);
+        app.printInFormat(null , 9);
     }
+
+
+    /**
+     * test connection to database
+     */
+    @Test
+    void testMain() {
+        app.main(new String[]{"localhost:33060", "10"} );
+    }
+
 }
+
