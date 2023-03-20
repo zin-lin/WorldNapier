@@ -6,6 +6,11 @@ package com.napier.devops13;
  Application class : main class
 */
 public class Application {
+
+    public void printInFormat(String name, String ans){
+        System.out.println( name +  "'s Population :: " + ans);
+    }
+
     /**
      * Entrypoint:: docker app
      * @param args

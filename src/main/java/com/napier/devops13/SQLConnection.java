@@ -140,7 +140,7 @@ public class SQLConnection {
 
     /**
      * get population of a particular continent
-     * @param continent
+     * @param region
      * @return
      */
     public long getPopulationOfRegion (String region)  {
@@ -163,7 +163,7 @@ public class SQLConnection {
 
     /**
      * get population of a particular city
-     * @param continent
+     * @param id
      * @return
      */
     public long getPopulationOfCityID (String id)  {
@@ -186,7 +186,7 @@ public class SQLConnection {
 
     /**
      * get population of a particular district
-     * @param continent
+     * @param id
      * @return
      */
     public long getPopulationOfDistrcit (String id)  {
