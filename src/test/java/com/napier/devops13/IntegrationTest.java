@@ -12,7 +12,7 @@ public class IntegrationTest {
     }
     @Test
     void testConnection() {
-        connection.connect("localhost:33060", 10000);
+        connection.connect("localhost:33060", 30000);
     }
 
     @Test
