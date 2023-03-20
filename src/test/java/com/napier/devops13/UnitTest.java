@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Author: Zin Lin Htun
  * matric: 40542237
  */
-public class AppTest {
+public class UnitTest {
     /**
      * application build test
      */
@@ -22,7 +22,7 @@ public class AppTest {
     }
 
     /**
-     * application buil test
+     * application build test
      */
     @Test
     public void testConnection() {
@@ -34,7 +34,17 @@ public class AppTest {
      */
     @Test
     void testPrint() {
-        app.printInFormat(null , null);
+        app.printInFormat(null , 9);
+    }
+
+
+    /**
+     * test connection to database
+     */
+    @Test
+    void testMain() {
+        app.main(new String[]{"localhost:33060", "10"} );
     }
 
 }
+

@@ -15,7 +15,7 @@ public class SQLConnection {
     /**
      * connect to Database
      */
-    public void connectDB(){
+    public void connect(String location, int delay){
         // try to find the SQL Driver
         try
         {
@@ -35,9 +35,9 @@ public class SQLConnection {
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(delay);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "devops13");
+                con = DriverManager.getConnection("jdbc:mysql://"+ location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "devops13");
                 System.out.println("Successfully connected");
                 break;
             }
