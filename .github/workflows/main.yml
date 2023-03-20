@@ -3,7 +3,7 @@ on: push
 
 jobs:
   UnitTests:
-    name: Unit Tests
+    name: Unit-Tests
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -19,7 +19,7 @@ jobs:
         run: mvn -Dtest=com.napier.devops13.UnitTest test
 
   IntegrationTests:
-    name: Integration Tests
+    name: Integration-Tests
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -42,9 +42,9 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           directory: ./target/site/jacoco
-          flags: Integration Tests # optional
+          flags: Integration-Tests
           verbose: true # optional (default = false)
   build:
     name: Build and Start Using docker-compose
