@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Author: Zin Lin Htun
  * matric: 40542237
  */
-public class AppTest {
+public class UnitTest {
     /**
      * application build test
      */
