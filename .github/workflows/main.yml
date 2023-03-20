@@ -44,7 +44,6 @@ jobs:
         with:
           # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           directory: ./target/site/jacoco
-          flags: Integration-Tests -f -R # optional
           verbose: true # optional (default = false)
   build:
     name: Build and Start Using docker-compose
