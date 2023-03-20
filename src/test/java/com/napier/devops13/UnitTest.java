@@ -36,5 +36,4 @@ public class UnitTest {
     void testPrint() {
         app.printInFormat(null , null);
     }
-
 }
