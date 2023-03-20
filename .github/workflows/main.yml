@@ -44,7 +44,6 @@ jobs:
         with:
           # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           directory: ./target/site/jacoco
-          files: /home/runner/work/SIESTAstepper/SIESTAstepper/coverage.xml
           flags: Integration-Tests
           verbose: true # optional (default = false)
   build:
