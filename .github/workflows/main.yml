@@ -18,6 +18,13 @@ jobs:
       - name: Unit Tests
         run: mvn -Dtest=com.napier.devops13.UnitTest test
 
+      - name: CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          directory: ./target/site/jacoco
+          flags: Unit-Tests
+          verbose: true # optional (default = false)
+
   IntegrationTests:
     name: Integration-Tests
     runs-on: ubuntu-20.04
