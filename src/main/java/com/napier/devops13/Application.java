@@ -55,7 +55,6 @@ public class Application {
         app.printPopulationReportInFormat(connection.getPopulationOfRegion("Caribbean"));
         app.printPopulationReportInFormat(connection.getPopulationOfCityID("64"));
         app.printPopulationReportInFormat( connection.getPopulationOfDistrict("Limburg"));
-
         connection.disconnect();
     }
 }
