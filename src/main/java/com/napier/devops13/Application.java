@@ -40,6 +40,7 @@ public class Application {
             connection.connect(args[0], Integer.parseInt(args[1]));
         }
 
+
         app.printCountryReports(connection.getCountryWorldPopulationDesc());
         app.printCountryReports(connection.getCountryContinentPopulationDesc("Asia"));
         app.printCountryReports(connection.getCountryRegionPopulationDesc("North America"));
