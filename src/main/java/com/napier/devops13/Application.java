@@ -53,6 +53,7 @@ public class Application {
         app.printPopulationReportInFormat( connection.getPopulationOfCountry("GBR"));
         app.printPopulationReportInFormat(connection.getPopulationOfContinent("Africa"));
         app.printPopulationReportInFormat(connection.getPopulationOfRegion("Caribbean"));
+
         app.printPopulationReportInFormat(connection.getPopulationOfCityID("64"));
         app.printPopulationReportInFormat( connection.getPopulationOfDistrict("Limburg"));
         connection.disconnect();
