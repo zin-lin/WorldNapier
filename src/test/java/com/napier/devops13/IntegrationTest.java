@@ -21,7 +21,7 @@ public class IntegrationTest {
     }
     @Test
     void testCity() {
-        connection.getPopulationOfCityID("YGN");
+        connection.getPopulationOfCityID("NYC");
     }
     @Test
     void testDistrict() {

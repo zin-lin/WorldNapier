@@ -46,5 +46,14 @@ public class UnitTest {
         app.main(new String[]{"localhost:33060", "10"} );
     }
 
+    /**
+     * test connection to database, when null is passed
+     */
+    @Test
+    void testMainNull() {
+        app.main(new String[]{});
+    }
+
+
 }
 
