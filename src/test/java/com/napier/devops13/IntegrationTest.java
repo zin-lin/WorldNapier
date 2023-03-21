@@ -46,4 +46,13 @@ public class IntegrationTest {
         connection.disconnect();
     }
 
+    @Test
+    void testCountryReports() {
+        connection.getCountryContinentPopulationDesc("Europe");
+        connection.getCountryRegionPopulationDesc("North America");
+        connection.getCountryWorldPopulationDesc();
+        connection.getCountryContinentPopulationDesc("Europe",3);
+        connection.getCountryRegionPopulationDesc("North America", 3);
+        connection.getCountryWorldPopulationDesc(6);
+    }
 }
