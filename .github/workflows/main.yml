@@ -15,7 +15,7 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Integration Tests and CodeCov
+      - name: Unit Tests and CodeCov #The only reason for starting docker is to speed up code coverage
         run: |
           docker build -t database ./db 
           docker run --name world -dp 33060:3306 database
