@@ -54,4 +54,14 @@ public class CountryReport {
         this.capital = capital;
         this.population = population;
     }
+
+    @Override
+    public String toString(){
+        return "Name: " + name
+                + ", Code: " + code
+                + ", Continent: " + continent
+                + ", Region: " + region
+                + ", Capital: " + capital
+                + ", Population: " + population;
+    }
 }
