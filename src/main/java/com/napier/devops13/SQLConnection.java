@@ -1,5 +1,7 @@
 package com.napier.devops13;
 
+import com.napier.devops13.models.PopulationReport;
+
 import java.sql.*;
 
 /**
@@ -74,8 +76,9 @@ public class SQLConnection {
      * get the total population of the world
      * @return ans
      */
-    public long getWorldPopulation ()  {
-        long ans = 0;
+    public PopulationReport getWorldPopulation ()  {
+        PopulationReport  report;
+        long ans = 0L; long city = 0L; double percent = 0; String name = "The World";
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -89,7 +92,26 @@ public class SQLConnection {
         catch (Exception err){
             System.out.println(err.getMessage());
         }
-        return  ans;
+        /**
+         * Living in cities
+         */
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population) `Population`  FROM `city`";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            if (rset.next()) {
+                city += rset.getLong("Population");
+            }
+
+            percent = ((double) city / ans) * 100.0;
+        }
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        report = new PopulationReport(name,ans, percent, 100-percent);
+        return  report;
     }
 
     /**
@@ -97,22 +119,47 @@ public class SQLConnection {
      * @param code, specific code of country
      * @return ans
      */
-    public long getPopulationOfCountry (String code)  {
-        long ans = 0;
+    public PopulationReport getPopulationOfCountry (String code)  {
+        PopulationReport  report;
+        long ans = 0L; long city = 0L; double percent = 0; String name = "";
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select Population, Code from country where `Code`" + "='" + code+ "'";
+            String strSelect = "select Population, Code, Name from country where `Code`" + "='" + code+ "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             if (rset.next()) {
                 ans += rset.getLong("Population");
+                name = rset.getString("Name");
             }
         }
         catch (Exception err){
             System.out.println(err.getMessage());
         }
-        return  ans;
+
+        /**
+         * those living in cities
+         */
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select SUM(Population) Population, CountryCode from city where `CountryCode`" + "='" + code+ "' GROUP BY CountryCode";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            if (rset.next()) {
+                city += rset.getLong("Population");
+            }
+            percent = ((double)city / ans) * 100.0;
+        }
+
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+
+
+        report = new PopulationReport(name,ans, percent, 100-percent);
+
+        return report;
     }
 
     /**
@@ -120,22 +167,45 @@ public class SQLConnection {
      * @param continent
      * @return
      */
-    public long getPopulationOfContinent (String continent)  {
-        long ans = 0;
+    public PopulationReport getPopulationOfContinent (String continent)  {
+        PopulationReport  report;
+        long ans = 0L; long city = 0L; double percent = 0; String name = continent; String code = "";
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select sum(Population) `Population` from country where `Continent`" + "='" + continent+ "'";
+            String strSelect = "select sum(Population) `Population`, Code from country where `Continent`" + "='" + continent+ "'" + " GROUP BY Code";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             if (rset.next()) {
                 ans += rset.getLong("Population");
+                code = rset.getString("Code");
             }
         }
         catch (Exception err){
             System.out.println(err.getMessage());
         }
-        return  ans;
+
+        /**
+         * those living in cities
+         */
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select SUM(Population) Population, CountryCode from city where `CountryCode`" + "='" + code+ "' GROUP BY CountryCode";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            if (rset.next()) {
+                city += rset.getLong("Population");
+            }
+            percent = ((double)city / ans) * 100.0;
+        }
+
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+
+        report = new PopulationReport(name,ans, percent, 100-percent);
+        return  report;
     }
 
     /**
@@ -143,22 +213,43 @@ public class SQLConnection {
      * @param region
      * @return
      */
-    public long getPopulationOfRegion (String region)  {
-        long ans = 0;
+    public PopulationReport getPopulationOfRegion (String region)  {
+        long ans = 0L; long city = 0L; double percent = 0; PopulationReport report; String code = "";
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select sum(Population) `Population` from country where `Region`" + "='" + region + "'";
+            String strSelect = "select sum(Population) `Population`, Code from country where `Region`" + "='" + region + "'" + " GROUP BY Code";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             if (rset.next()) {
                 ans += rset.getLong("Population");
+                code = rset.getString("Code");
             }
         }
         catch (Exception err){
             System.out.println(err.getMessage());
         }
-        return  ans;
+
+        /**
+         * those living in cities
+         */
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select SUM(Population) Population, CountryCode from city where `CountryCode`" + "='" + code+ "' GROUP BY CountryCode";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            if (rset.next()) {
+                city += rset.getLong("Population");
+            }
+            percent = ((double)city / ans) * 100.0;
+        }
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        report = new PopulationReport(region,ans, percent, 100-percent);
+
+        return  report;
     }
 
     /**
@@ -166,22 +257,25 @@ public class SQLConnection {
      * @param id
      * @return
      */
-    public long getPopulationOfCityID (String id)  {
-        long ans = 0;
+    public PopulationReport getPopulationOfCityID (String id)  {
+        long ans = 0; String name = "";
+        PopulationReport report;
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select Population from city where `ID`" + "='" + id + "'";
+            String strSelect = "select Population, Name from city where `ID`" + "='" + id + "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             if (rset.next()) {
                 ans += rset.getLong("Population");
+                name = rset.getString("Name");
             }
         }
         catch (Exception err){
             System.out.println(err.getMessage());
         }
-        return  ans;
+        report = new PopulationReport(name,ans, 100, 0);
+        return  report;
     }
 
     /**
@@ -189,8 +283,8 @@ public class SQLConnection {
      * @param id
      * @return
      */
-    public long getPopulationOfDistrcit (String id)  {
-        long ans = 0;
+    public PopulationReport getPopulationOfDistrict (String id)  {
+        long ans = 0; long city = 0; double percent = 0; PopulationReport report;
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -204,7 +298,9 @@ public class SQLConnection {
         catch (Exception err){
             System.out.println(err.getMessage());
         }
-        return  ans;
+        report = new PopulationReport(id,ans, 100, 0);
+
+        return  report;
     }
 
 }

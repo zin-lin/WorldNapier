@@ -1,5 +1,6 @@
 package com.napier.devops13;
 
+import com.napier.devops13.models.PopulationReport;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -34,9 +35,8 @@ public class UnitTest {
      */
     @Test
     void testPrint() {
-        app.printInFormat(null , 9);
+        app.printPopulationReportInFormat(new PopulationReport("XXX", 234234234, 12, 100-12) );
     }
-
 
     /**
      * test connection to database
@@ -53,7 +53,6 @@ public class UnitTest {
     void testMainNull() {
         app.main(new String[]{});
     }
-
 
 }
 

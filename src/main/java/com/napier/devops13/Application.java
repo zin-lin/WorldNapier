@@ -1,5 +1,7 @@
 package com.napier.devops13;
 
+import com.napier.devops13.models.PopulationReport;
+
 /**
  Author : Zin Lin Htun
  Matriculation : 40542237
@@ -7,8 +9,14 @@ package com.napier.devops13;
 */
 public class Application {
 
-    public void printInFormat(String name, long ans){
-        System.out.println( name +  "'s Population :: " + ans);
+    public void printPopulationReportInFormat(PopulationReport report) {
+
+        System.out.println("Name: "+ report.getName() +
+                " Population: " + report.getPopulation() +
+                " City Percentage: "+ report.getCityPercentage() +
+                "% Non-City Percentage: "+ report.getNonCityPercentage() +"%"
+                );
+
     }
 
     /**
@@ -20,17 +28,17 @@ public class Application {
         Application app = new Application();
         SQLConnection connection = new SQLConnection();
         if(args.length < 1){
-            connection.connect("localhost:33060", 30000);
+            connection.connect("localhost:33060", 1);
         }else{
             connection.connect(args[0], Integer.parseInt(args[1]));
         }
 
-        app.printInFormat("The World", connection.getWorldPopulation());
-        app.printInFormat("Great Britain", connection.getWorldPopulation());
-        app.printInFormat("Africa", connection.getPopulationOfCountry("GBR"));
-        app.printInFormat("Caribbean",connection.getPopulationOfRegion("Caribbean"));
-        app.printInFormat("Dubai",connection.getPopulationOfCityID("64"));
-        app.printInFormat("Limburgh", connection.getPopulationOfDistrcit("Limburg"));
+        app.printPopulationReportInFormat(connection.getWorldPopulation());
+        app.printPopulationReportInFormat( connection.getPopulationOfCountry("GBR"));
+        app.printPopulationReportInFormat(connection.getPopulationOfContinent("Africa"));
+        app.printPopulationReportInFormat(connection.getPopulationOfRegion("Caribbean"));
+        app.printPopulationReportInFormat(connection.getPopulationOfCityID("64"));
+        app.printPopulationReportInFormat( connection.getPopulationOfDistrict("Limburg"));
 
         connection.disconnect();
     }
