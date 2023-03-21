@@ -1,8 +1,10 @@
 package com.napier.devops13;
 
+import com.napier.devops13.models.CountryReport;
 import com.napier.devops13.models.PopulationReport;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
 SQLConnection :: the purpose of this class is to extract data from database docker.
@@ -301,6 +303,159 @@ public class SQLConnection {
         report = new PopulationReport(id,ans, 100, 0);
 
         return  report;
+    }
+
+    public ArrayList<CountryReport> getCountryWorldPopulationDesc (){
+        ArrayList<CountryReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, country.Name Name, Continent, Region, city.Name Capital, country.Population from country JOIN city ON country.Capital = ID ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next()) {
+                CountryReport countryReport = new CountryReport(rset.getString("Code"),
+                        rset.getString("Name"),
+                        rset.getString("Continent"),
+                        rset.getString("Region"),
+                        rset.getString("Capital"),
+                        rset.getLong("Population")
+                        );
+                ans.add(countryReport);
+            }
+        }
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    public ArrayList<CountryReport> getCountryContinentPopulationDesc (String continent){
+        ArrayList<CountryReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, country.Name Name, Continent, Region, city.Name Capital, country.Population from country JOIN city ON country.Capital = ID Where Continent = '" + continent + "' ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next()) {
+                CountryReport countryReport = new CountryReport(rset.getString("Code"),
+                        rset.getString("Name"),
+                        rset.getString("Continent"),
+                        rset.getString("Region"),
+                        rset.getString("Capital"),
+                        rset.getLong("Population")
+                );
+                ans.add(countryReport);
+            }
+        }
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    public ArrayList<CountryReport> getCountryRegionPopulationDesc (String region){
+        ArrayList<CountryReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, country.Name Name, Continent, Region, city.Name Capital, country.Population from country JOIN city ON country.Capital = ID  Where Continent = '" + region + "' ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next()) {
+                CountryReport countryReport = new CountryReport(rset.getString("Code"),
+                        rset.getString("Name"),
+                        rset.getString("Continent"),
+                        rset.getString("Region"),
+                        rset.getString("Capital"),
+                        rset.getLong("Population")
+                );
+                ans.add(countryReport);
+            }
+        }
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    public ArrayList<CountryReport> getCountryWorldPopulationDesc (int count){
+        ArrayList<CountryReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, country.Name Name, Continent, Region, city.Name Capital, country.Population from country JOIN city ON country.Capital = ID ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            for(int a = 0; a < count; a++) {
+                rset.next();
+                CountryReport countryReport = new CountryReport(rset.getString("Code"),
+                        rset.getString("Name"),
+                        rset.getString("Continent"),
+                        rset.getString("Region"),
+                        rset.getString("Capital"),
+                        rset.getLong("Population")
+                );
+                ans.add(countryReport);
+            }
+        }
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    public ArrayList<CountryReport> getCountryContinentPopulationDesc (String continent, int count ){
+        ArrayList<CountryReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, country.Name Name, Continent, Region, city.Name Capital, country.Population from country JOIN city ON country.Capital = ID Where Continent = '" + continent + "' ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            for(int a = 0; a < count; a++) {
+                rset.next();
+                CountryReport countryReport = new CountryReport(rset.getString("Code"),
+                        rset.getString("Name"),
+                        rset.getString("Continent"),
+                        rset.getString("Region"),
+                        rset.getString("Capital"),
+                        rset.getLong("Population")
+                );
+                ans.add(countryReport);
+            }
+        }
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    public ArrayList<CountryReport> getCountryRegionPopulationDesc (String region, int count){
+        ArrayList<CountryReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, country.Name Name, Continent, Region, city.Name Capital, country.Population from country JOIN city ON country.Capital = ID Where Continent = '" + region + "' ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            for(int a = 0; a < count; a++) {
+                rset.next();
+                CountryReport countryReport = new CountryReport(rset.getString("Code"),
+                        rset.getString("Name"),
+                        rset.getString("Continent"),
+                        rset.getString("Region"),
+                        rset.getString("Capital"),
+                        rset.getLong("Population")
+                );
+                ans.add(countryReport);
+            }
+        }
+        catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        return ans;
     }
 
 }

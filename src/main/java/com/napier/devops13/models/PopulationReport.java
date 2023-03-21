@@ -40,5 +40,11 @@ public class PopulationReport {
         this.cityPercentage = cityPercentage;
         this.nonCityPercentage = nonCityPercentage;
     }
-
+    @Override
+    public String toString(){
+        return "Name: " + name
+                + ", Population: " + population
+                + ", City Percentage: " + cityPercentage
+                + "%, Non-City Percentage: " + nonCityPercentage + "%";
+    }
 }
