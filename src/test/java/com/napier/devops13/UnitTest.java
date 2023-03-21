@@ -74,6 +74,7 @@ public class UnitTest {
         cityReport.toString();
     }
 
+    @Test
     void testCapitalCityReport(){
         CapitalCityReport cityReport = new CapitalCityReport("Name", 232323232, "Country");
         cityReport.setCountry("United States");
@@ -99,6 +100,7 @@ public class UnitTest {
         countryReport.getCode();
         countryReport.getName();
         countryReport.getCode();
+        countryReport.getPopulation();
         countryReport.toString();
     }
 
