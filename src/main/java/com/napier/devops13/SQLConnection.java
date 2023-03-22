@@ -53,7 +53,7 @@ public class SQLConnection {
     /**
      * get the total population of the world
      *
-     * @return ans
+     * @return ans, returns the total population of the world.
      */
     public PopulationReport getWorldPopulation() {
         PopulationReport report;
@@ -75,6 +75,7 @@ public class SQLConnection {
         }
         /**
          * Living in cities
+         * returns report of all people living in cities.
          */
         try {
             Statement stmt = con.createStatement();
@@ -98,7 +99,7 @@ public class SQLConnection {
      * get Population of a particular country
      *
      * @param code, specific code of country
-     * @return ans
+     * @return ans, returns population of the particular country queried for.
      */
     public PopulationReport getPopulationOfCountry(String code) {
         PopulationReport report;
@@ -122,6 +123,7 @@ public class SQLConnection {
 
         /**
          * those living in cities
+         * returns population percentage of those living in cities.
          */
         try {
             Statement stmt = con.createStatement();
@@ -146,8 +148,8 @@ public class SQLConnection {
     /**
      * get population of a particular continent
      *
-     * @param continent
-     * @return
+     * @param continent, takes what continent we are querying for the population of
+     * @return report, returns population report for queried company.
      */
     public PopulationReport getPopulationOfContinent(String continent) {
         PopulationReport report;
@@ -192,10 +194,10 @@ public class SQLConnection {
     }
 
     /**
-     * get population of a particular continent
+     * get population of a particular region
      *
-     * @param region
-     * @return
+     * @param region, takes in the region we want to query for the population of.
+     * @return report, returns report of the region's population.
      */
     public PopulationReport getPopulationOfRegion(String region) {
         long ans = 0L;
@@ -239,10 +241,10 @@ public class SQLConnection {
     }
 
     /**
-     * get population of a particular city
+     * get population of a particular city by ID.
      *
-     * @param id
-     * @return
+     * @param id, takes in the ID of the city we want to query for.
+     * @return report, returns report of the population of the city queried.
      */
     public PopulationReport getPopulationOfCityID(String id) {
         long ans = 0;
@@ -268,8 +270,8 @@ public class SQLConnection {
     /**
      * get population of a particular district
      *
-     * @param id
-     * @return
+     * @param id, takes the ID of the district we want the population of.
+     * @return report, returns a population report of the district we are querying for.
      */
     public PopulationReport getPopulationOfDistrict(String id) {
         long ans = 0;
@@ -293,6 +295,10 @@ public class SQLConnection {
         return report;
     }
 
+    /**
+     *
+     * @return ans, returns a report for every country in the world, organised largest to smallest.
+     */
     public ArrayList<CountryReport> getCountryWorldPopulationDesc() {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
@@ -317,6 +323,11 @@ public class SQLConnection {
         return ans;
     }
 
+    /**
+     *
+     * @param continent, takes in a specific continent
+     * @return ans, returns every country in that continent, in descending population size order.
+     */
     public ArrayList<CountryReport> getCountryContinentPopulationDesc(String continent) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
@@ -341,6 +352,11 @@ public class SQLConnection {
         return ans;
     }
 
+    /**
+     *
+     * @param region, takes in a specific region.
+     * @return ans, returns list of continents, countries in that region, as well as the respective capital cities, and lists them in descending population size order.
+     */
     public ArrayList<CountryReport> getCountryRegionPopulationDesc(String region) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
@@ -365,6 +381,11 @@ public class SQLConnection {
         return ans;
     }
 
+    /**
+     *
+     * @param count, takes in a numeric value
+     * @return
+     */
     public ArrayList<CountryReport> getCountryWorldPopulationDesc(int count) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
@@ -471,7 +492,7 @@ public class SQLConnection {
 
     /**
      * Gets city for the world
-     * @param continent
+     * @param
      * @return
      */
 
@@ -500,7 +521,7 @@ public class SQLConnection {
 
     /**
      * Gets city for the certain region
-     * @param continent
+     * @param
      * @return
      */
 
@@ -559,7 +580,7 @@ public class SQLConnection {
 
     /**
      * Gets city for the world
-     * @param continent
+     * @param count,
      * @return
      */
 
@@ -589,7 +610,7 @@ public class SQLConnection {
 
     /**
      * Gets city for the certain region
-     * @param continent
+     * @param region, count
      * @return
      */
 
