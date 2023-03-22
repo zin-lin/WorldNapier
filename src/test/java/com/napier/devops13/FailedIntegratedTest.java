@@ -14,15 +14,15 @@ public class FailedIntegratedTest {
 
     @Test
     void testCountry() {
-        connection.getCountryPopulation("GBR");
+        connection.getPopulationOfCountry("GBR");
     }
     @Test
     void testCity() {
-        connection.getCityPopulation("NYC");
+        connection.getPopulationOfCityID("NYC");
     }
     @Test
     void testDistrict() {
-        connection.getDistrictPopulation("Limburg");
+        connection.getPopulationOfDistrict("Limburg");
     }
     @Test
     void testPopulation() {
@@ -30,28 +30,32 @@ public class FailedIntegratedTest {
     }
     @Test
     void testRegion() {
-        connection.getRegionPopulation("Carribean");
+        connection.getPopulationOfRegion("Carribean");
     }
 
     @Test
     void testContinent() {
-        connection.getContinentPopulation("Africa");
+        connection.getPopulationOfContinent("Africa");
     }
 
     @Test
-    void testDisconnection() {
+    void testDisconnection() throws SQLException {
         connection.disconnect();
     }
 
     @Test
     void testCountryReports() {
-        connection.getFullContinentReport("Europe");
-        connection.getFullRegionReport("North America");
-        connection.getFullCountryReport();
-        connection.getFullContinentReport("Europe",3);
-        connection.getFullRegionReport("North America", 3);
-        connection.getFullCountryReport(6);
-        connection.getCapitalReport("Europe");
-        connection.getCapitalReport("North America");
+        connection.getCountryContinentPopulationDesc("Europe");
+        connection.getCountryRegionPopulationDesc("North America");
+        connection.getCountryWorldPopulationDesc();
+        connection.getCountryContinentPopulationDesc("Europe",3);
+        connection.getCountryRegionPopulationDesc("North America", 3);
+        connection.getCountryWorldPopulationDesc(6);
+        connection.getCountryRegionPopulationDesc("North America");
+        connection.getCapitalCityContinentReport("Europe");
+        connection.getCapitalCityReport();
+        connection.getCapitalCityRegionReport("North America",5);
+        connection.getCapitalCityContinentReport("Europe", 6);
+        connection.getCapitalCityReport(1);
     }
 }

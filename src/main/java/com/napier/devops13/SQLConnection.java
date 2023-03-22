@@ -41,14 +41,12 @@ public class SQLConnection {
     /**
      * Disconnect from the MySQL database.
      */
-    public void disconnect() {
+    public void disconnect() throws SQLException {
         if (con != null) {
-            try {
-                // Close connection
-                con.close();
-            } catch (Exception e) {
-                System.out.println("Error closing connection to database");
-            }
+
+            // Close connection
+            con.close();
+
         }
     }
 
@@ -472,7 +470,7 @@ public class SQLConnection {
     }
 
     /**
-     * Gets city for the certain continent
+     * Gets city for the world
      * @param continent
      * @return
      */
@@ -499,4 +497,124 @@ public class SQLConnection {
         }
         return ans;
     }
+
+    /**
+     * Gets city for the certain region
+     * @param continent
+     * @return
+     */
+
+    public ArrayList<CapitalCityReport> getCapitalCityRegionReport(String region) {
+        ArrayList<CapitalCityReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, city.Name Capital, Continent ,Region, country.Name Name,city.Population Population from country JOIN city ON country.Capital = ID  Where country.Region = '" + region + "' ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next()) {
+                CapitalCityReport capitalCityReport;
+                capitalCityReport = new CapitalCityReport(
+                        rset.getString("Capital"),
+                        rset.getString("Continent"),
+                        rset.getLong("Population")
+                );
+                ans.add(capitalCityReport);
+            }
+        } catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    /**
+     * Gets city for the certain continent
+     * @param continent
+     * @return
+     */
+
+    public ArrayList<CapitalCityReport> getCapitalCityContinentReport(String continent, int count) {
+        ArrayList<CapitalCityReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, city.Name Capital, Continent ,country.Name Name,city.Population Population from country JOIN city ON country.Capital = ID  Where country.Continent = '" + continent + "' ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            for (int a = 0; a < count; a++) {
+                rset.next();
+                CapitalCityReport capitalCityReport;
+                capitalCityReport = new CapitalCityReport(
+                        rset.getString("Capital"),
+                        rset.getString("Continent"),
+                        rset.getLong("Population")
+                );
+                ans.add(capitalCityReport);
+            }
+        } catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    /**
+     * Gets city for the world
+     * @param continent
+     * @return
+     */
+
+    public ArrayList<CapitalCityReport> getCapitalCityReport(int count) {
+        ArrayList<CapitalCityReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, city.Name Capital, Continent , country.Name Name,city.Population Population from country JOIN city ON country.Capital = ID ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            for (int a = 0; a < count; a++) {
+                rset.next();
+                CapitalCityReport capitalCityReport;
+                capitalCityReport = new CapitalCityReport(
+                        rset.getString("Capital"),
+                        rset.getString("Continent"),
+                        rset.getLong("Population")
+                );
+                ans.add(capitalCityReport);
+            }
+        } catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    /**
+     * Gets city for the certain region
+     * @param continent
+     * @return
+     */
+
+    public ArrayList<CapitalCityReport> getCapitalCityRegionReport(String region, int count) {
+        ArrayList<CapitalCityReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, city.Name Capital, Continent ,Region, country.Name Name,city.Population Population from country JOIN city ON country.Capital = ID  Where country.Region = '" + region + "' ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            for (int a = 0; a < count; a++) {
+                rset.next();
+                CapitalCityReport capitalCityReport;
+                capitalCityReport = new CapitalCityReport(
+                        rset.getString("Capital"),
+                        rset.getString("Continent"),
+                        rset.getLong("Population")
+                );
+                ans.add(capitalCityReport);
+            }
+        } catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
 }

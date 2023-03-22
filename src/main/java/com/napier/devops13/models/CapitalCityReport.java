@@ -36,4 +36,11 @@ public class CapitalCityReport {
         this.population = population;
         this.country = country;
     }
+
+    @Override
+    public String toString(){
+         return "Name: " + name
+                + ", Country: " + country
+                + ", Population: " + population;
+    }
 }
