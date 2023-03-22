@@ -56,7 +56,7 @@ public class IntegrationTest {
         connection.getCountryContinentPopulationDesc("Europe",3);
         connection.getCountryRegionPopulationDesc("North America", 3);
         connection.getCountryWorldPopulationDesc(6);
-        connection.getCapitalCityContinentReport("London");
+        connection.getCapitalCityContinentReport("Europe");
         connection.getCapitalCityReport();
 
     }
