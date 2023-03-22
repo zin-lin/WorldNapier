@@ -7,6 +7,7 @@ import com.napier.devops13.models.PopulationReport;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -48,7 +49,7 @@ public class UnitTest {
      * test connection to database
      */
     @Test
-    void testMain() {
+    void testMain() throws SQLException, ClassNotFoundException, InterruptedException {
         app.main(new String[]{"localhost:33060", "10"} );
     }
 
@@ -56,7 +57,7 @@ public class UnitTest {
      * test connection to database, when null is passed
      */
     @Test
-    void testMainNull() {
+    void testMainNull() throws SQLException, ClassNotFoundException, InterruptedException {
         app.main(new String[]{});
     }
 

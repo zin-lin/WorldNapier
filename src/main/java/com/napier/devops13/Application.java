@@ -3,6 +3,7 @@ package com.napier.devops13;
 import com.napier.devops13.models.CountryReport;
 import com.napier.devops13.models.PopulationReport;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -30,7 +31,7 @@ public class Application {
      * Entrypoint:: docker app
      * @param args
      */
-    public static void main (String [] args){
+    public static void main (String [] args) throws SQLException, ClassNotFoundException, InterruptedException {
 
         Application app = new Application();
         SQLConnection connection = new SQLConnection();

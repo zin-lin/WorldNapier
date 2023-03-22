@@ -2,6 +2,8 @@ package com.napier.devops13;
 
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLException;
+
 /**
  * FailedTestReport
  * Author: Zin Lin Htun
@@ -10,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class FailedIntegratedTest {
     static SQLConnection connection = new SQLConnection();
     @Test
-    void testConnection() {
+    void testConnection() throws SQLException, ClassNotFoundException, InterruptedException {
         connection.connect("localhost:33060", 1);
     }
 
@@ -53,6 +55,7 @@ public class FailedIntegratedTest {
         connection.getCountryContinentPopulationDesc("Europe",3);
         connection.getCountryRegionPopulationDesc("North America", 3);
         connection.getCountryWorldPopulationDesc(6);
-        connection.getCapitalCityReport("London");
+        connection.getCapitalCityContinentReport("Europe");
+        connection.getCapitalCityReport();
     }
 }

@@ -3,6 +3,8 @@ package com.napier.devops13;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLException;
+
 public class IntegrationTest {
     static SQLConnection connection;
 
@@ -11,7 +13,7 @@ public class IntegrationTest {
         connection = new SQLConnection();
     }
     @Test
-    void testConnection() {
+    void testConnection() throws SQLException, ClassNotFoundException, InterruptedException {
         connection.connect("localhost:33060", 30000);
     }
 
@@ -54,6 +56,8 @@ public class IntegrationTest {
         connection.getCountryContinentPopulationDesc("Europe",3);
         connection.getCountryRegionPopulationDesc("North America", 3);
         connection.getCountryWorldPopulationDesc(6);
-        connection.getCapitalCityReport("London");
+        connection.getCapitalCityContinentReport("London");
+        connection.getCapitalCityReport();
+
     }
 }

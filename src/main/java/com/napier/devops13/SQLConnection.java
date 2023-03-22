@@ -21,33 +21,20 @@ public class SQLConnection {
     /**
      * connect to Database
      */
-    public void connect(String location, int delay) {
+    public void connect(String location, int delay) throws ClassNotFoundException, SQLException, InterruptedException {
         // try to find the SQL Driver
-        try {
-            // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Could not load SQL driver");
-            System.exit(-1);
-        }
 
         int retries = 10;
         for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
-            try {
+
                 // Wait a bit for db to start
                 Thread.sleep(delay);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "devops13");
                 System.out.println("Successfully connected");
                 break;
-            } catch (SQLException sqlException) {
-                // indexing starts with 1 for the sake of readability
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i + 1));
-                System.out.println(sqlException.getMessage());
-            } catch (InterruptedException ie) {
-                System.out.println("Thread interrupted? Should not happen.");
-            }
+
         }
     }
 
@@ -455,17 +442,52 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CapitalCityReport> getCapitalCityReport(String capital) {
+    /**
+     * Gets city for the certain continent
+     * @param continent
+     * @return
+     */
+
+    public ArrayList<CapitalCityReport> getCapitalCityContinentReport(String continent) {
         ArrayList<CapitalCityReport> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select Code, city.Name Capital, country.Name Name,city.Population Capital from country JOIN city ON country.Capital = ID  Where Continent = '" + capital + "' ORDER BY `Population` desc";
+            String strSelect = "select Code, city.Name Capital, country.Name Name,city.Population Capital from country JOIN city ON country.Capital = ID  Where Continent = '" + continent + "' ORDER BY `Population` desc";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next()) {
                 CapitalCityReport capitalCityReport;
-                capitalCityReport = new CapitalCityReport(rset.getString("Code"),
+                capitalCityReport = new CapitalCityReport(
+                        rset.getString("Capital"),
+                        rset.getString("Continent"),
+                        rset.getLong("Capital Population")
+                );
+                ans.add(capitalCityReport);
+            }
+        } catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    /**
+     * Gets city for the certain continent
+     * @param continent
+     * @return
+     */
+
+    public ArrayList<CapitalCityReport> getCapitalCityReport() {
+        ArrayList<CapitalCityReport> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select Code, city.Name Capital, country.Name Name,city.Population Capital from country JOIN city ON country.Capital = ID  ORDER BY `Population` desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next()) {
+                CapitalCityReport capitalCityReport;
+                capitalCityReport = new CapitalCityReport(
                         rset.getString("Capital"),
                         rset.getString("Continent"),
                         rset.getLong("Capital Population")
