@@ -453,7 +453,7 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select Code, city.Name Capital, country.Name Name,city.Population Capital from country JOIN city ON country.Capital = ID  Where Continent = '" + continent + "' ORDER BY `Population` desc";
+            String strSelect = "select Code, city.Name Capital, Continent ,country.Name Name,city.Population Population from country JOIN city ON country.Capital = ID  Where country.Continent = '" + continent + "' ORDER BY `Population` desc";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next()) {
@@ -482,7 +482,7 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select Code, city.Name Capital, country.Name Name,city.Population Capital from country JOIN city ON country.Capital = ID  ORDER BY `Population` desc";
+            String strSelect = "select Code, city.Name Capital, Continent , country.Name Name,city.Population Population from country JOIN city ON country.Capital = ID ORDER BY `Population` desc";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next()) {
