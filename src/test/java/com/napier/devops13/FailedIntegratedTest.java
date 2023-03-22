@@ -54,7 +54,7 @@ public class FailedIntegratedTest {
         connection.getCountryRegionPopulationDesc("North America");
         connection.getCapitalCityContinentReport("Europe");
         connection.getCapitalCityReport();
-        connection.getCapitalCityContinentReport("North America",5);
+        connection.getCapitalCityRegionReport("North America",5);
         connection.getCapitalCityContinentReport("Europe", 6);
         connection.getCapitalCityReport(1);
     }
