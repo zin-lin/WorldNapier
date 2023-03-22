@@ -39,7 +39,7 @@ public class FailedIntegratedTest {
     }
 
     @Test
-    void testDisconnection() {
+    void testDisconnection() throws SQLException {
         connection.disconnect();
     }
 
@@ -54,7 +54,7 @@ public class FailedIntegratedTest {
         connection.getCountryRegionPopulationDesc("North America");
         connection.getCapitalCityContinentReport("Europe");
         connection.getCapitalCityReport();
-        connection.getCountryRegionPopulationDesc("North America",5);
+        connection.getCapitalCityContinentReport("North America",5);
         connection.getCapitalCityContinentReport("Europe", 6);
         connection.getCapitalCityReport(1);
     }

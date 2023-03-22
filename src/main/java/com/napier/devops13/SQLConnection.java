@@ -41,14 +41,12 @@ public class SQLConnection {
     /**
      * Disconnect from the MySQL database.
      */
-    public void disconnect() {
+    public void disconnect() throws SQLException {
         if (con != null) {
-            try {
-                // Close connection
-                con.close();
-            } catch (Exception e) {
-                System.out.println("Error closing connection to database");
-            }
+
+            // Close connection
+            con.close();
+
         }
     }
 

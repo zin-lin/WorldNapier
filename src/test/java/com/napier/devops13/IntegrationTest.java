@@ -44,7 +44,7 @@ public class IntegrationTest {
     }
 
     @Test
-    void testDisconnection() {
+    void testDisconnection() throws SQLException {
         connection.disconnect();
     }
 
