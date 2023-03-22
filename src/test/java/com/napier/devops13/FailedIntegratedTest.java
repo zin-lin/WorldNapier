@@ -18,15 +18,15 @@ public class FailedIntegratedTest {
 
     @Test
     void testCountry() {
-        connection.getPopulationOfCountry("GBR");
+        connection.getCountryPopulation("GBR");
     }
     @Test
     void testCity() {
-        connection.getPopulationOfCityID("NYC");
+        connection.getCityPopulation("NYC");
     }
     @Test
     void testDistrict() {
-        connection.getPopulationOfDistrict("Limburg");
+        connection.getDistrictPopulation("Limburg");
     }
     @Test
     void testPopulation() {
@@ -34,12 +34,12 @@ public class FailedIntegratedTest {
     }
     @Test
     void testRegion() {
-        connection.getPopulationOfRegion("Carribean");
+        connection.getRegionPopulation("Carribean");
     }
 
     @Test
     void testContinent() {
-        connection.getPopulationOfContinent("Africa");
+        connection.getContinentPopulation("Africa");
     }
 
     @Test
@@ -49,13 +49,13 @@ public class FailedIntegratedTest {
 
     @Test
     void testCountryReports() {
-        connection.getCountryContinentPopulationDesc("Europe");
-        connection.getCountryRegionPopulationDesc("North America");
-        connection.getCountryWorldPopulationDesc();
-        connection.getCountryContinentPopulationDesc("Europe",3);
-        connection.getCountryRegionPopulationDesc("North America", 3);
-        connection.getCountryWorldPopulationDesc(6);
-        connection.getCapitalCityContinentReport("Europe");
-        connection.getCapitalCityReport();
+        connection.getFullContinentReport("Europe");
+        connection.getFullRegionReport("North America");
+        connection.getFullCountryReport();
+        connection.getFullContinentReport("Europe",3);
+        connection.getFullRegionReport("North America", 3);
+        connection.getFullCountryReport(6);
+        connection.getCapitalReport("Europe");
+        connection.getCapitalReport("North America");
     }
 }

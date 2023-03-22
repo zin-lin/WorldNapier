@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 /**
  Author : Zin Lin Htun
- Matriculation : 40542237
+ Optimised by : Maya Peretz
+ Matriculation : 40542237, 40528965
  Application class : main class
 */
 public class Application {
@@ -43,19 +44,19 @@ public class Application {
 
         System.out.println("Population Reports/n");
 
-        app.printCountryReports(connection.getCountryWorldPopulationDesc());
-        app.printCountryReports(connection.getCountryContinentPopulationDesc("Asia"));
-        app.printCountryReports(connection.getCountryRegionPopulationDesc("North America"));
-        app.printCountryReports(connection.getCountryWorldPopulationDesc(3));
-        app.printCountryReports(connection.getCountryContinentPopulationDesc("Asia",3));
-        app.printCountryReports(connection.getCountryRegionPopulationDesc("North America", 3));
+        app.printCountryReports(connection.getFullCountryReport(6));
+        app.printCountryReports(connection.getFullContinentReport("Asia"));
+        app.printCountryReports(connection.getFullRegionReport("North America"));
+        app.printCountryReports(connection.getFullCountryReport(3));
+        app.printCountryReports(connection.getFullContinentReport("Asia",3));
+        app.printCountryReports(connection.getFullRegionReport("North America", 3));
 
         app.printPopulationReportInFormat(connection.getWorldPopulation());
-        app.printPopulationReportInFormat( connection.getPopulationOfCountry("GBR"));
-        app.printPopulationReportInFormat(connection.getPopulationOfContinent("Africa"));
-        app.printPopulationReportInFormat(connection.getPopulationOfRegion("Caribbean"));
-        app.printPopulationReportInFormat(connection.getPopulationOfCityID("64"));
-        app.printPopulationReportInFormat( connection.getPopulationOfDistrict("Limburg"));
+        app.printPopulationReportInFormat( connection.getCountryPopulation("GBR"));
+        app.printPopulationReportInFormat(connection.getContinentPopulation("Africa"));
+        app.printPopulationReportInFormat(connection.getRegionPopulation("Caribbean"));
+        app.printPopulationReportInFormat(connection.getCityPopulation("64"));
+        app.printPopulationReportInFormat( connection.getDistrictPopulation("Limburg"));
         connection.disconnect();
     }
 }

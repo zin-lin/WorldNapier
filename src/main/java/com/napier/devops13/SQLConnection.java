@@ -99,10 +99,10 @@ public class SQLConnection {
     /**
      * get Population of a particular country
      *
-     * @param code, specific code of country
-     * @return ans
+     * @param code, takes the specific ID code of the country
+     * @return ans, returns the final value
      */
-    public PopulationReport getPopulationOfCountry(String code) {
+    public PopulationReport getCountryPopulation(String code) {
         PopulationReport report;
         long ans = 0L;
         long city = 0L;
@@ -148,10 +148,10 @@ public class SQLConnection {
     /**
      * get population of a particular continent
      *
-     * @param continent
-     * @return
+     * @param continent, takes the continent
+     * @return report, gives us back the final population report
      */
-    public PopulationReport getPopulationOfContinent(String continent) {
+    public PopulationReport getContinentPopulation(String continent) {
         PopulationReport report;
         long ans = 0L;
         long city = 0L;
@@ -196,10 +196,10 @@ public class SQLConnection {
     /**
      * get population of a particular continent
      *
-     * @param region
-     * @return
+     * @param region, takes the region whose population we want
+     * @return report, returns the final population report
      */
-    public PopulationReport getPopulationOfRegion(String region) {
+    public PopulationReport getRegionPopulation(String region) {
         long ans = 0L;
         long city = 0L;
         double percent = 0;
@@ -243,10 +243,10 @@ public class SQLConnection {
     /**
      * get population of a particular city
      *
-     * @param id
-     * @return
+     * @param id, takes the ID of the city whose population we want
+     * @return report, returns final population of the city
      */
-    public PopulationReport getPopulationOfCityID(String id) {
+    public PopulationReport getCityPopulation(String id) {
         long ans = 0;
         String name = "";
         PopulationReport report;
@@ -270,10 +270,10 @@ public class SQLConnection {
     /**
      * get population of a particular district
      *
-     * @param id
-     * @return
+     * @param id, takes district ID for the specific district we want
+     * @return report, returns final population report
      */
-    public PopulationReport getPopulationOfDistrict(String id) {
+    public PopulationReport getDistrictPopulation(String id) {
         long ans = 0;
         long city = 0;
         double percent = 0;
@@ -295,7 +295,10 @@ public class SQLConnection {
         return report;
     }
 
-    public ArrayList<CountryReport> getCountryWorldPopulationDesc() {
+    /**
+     * @return ans, returns full country report
+     */
+    public ArrayList<CountryReport> getFullCountryReport() {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
@@ -319,7 +322,7 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CountryReport> getCountryContinentPopulationDesc(String continent) {
+    public ArrayList<CountryReport> getFullContinentReport(String continent) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
@@ -343,7 +346,7 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CountryReport> getCountryRegionPopulationDesc(String region) {
+    public ArrayList<CountryReport> getFullRegionReport(String region) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
@@ -367,7 +370,7 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CountryReport> getCountryWorldPopulationDesc(int count) {
+    public ArrayList<CountryReport> getFullCountryReport(int count) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
@@ -392,7 +395,7 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CountryReport> getCountryContinentPopulationDesc(String continent, int count) {
+    public ArrayList<CountryReport> getFullContinentReport(String continent, int count) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
@@ -417,7 +420,7 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CountryReport> getCountryRegionPopulationDesc(String region, int count) {
+    public ArrayList<CountryReport> getFullRegionReport(String region, int count) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
@@ -448,7 +451,7 @@ public class SQLConnection {
      * @return
      */
 
-    public ArrayList<CapitalCityReport> getCapitalCityContinentReport(String continent) {
+    public ArrayList<CapitalCityReport> getCapitalReport(String continent) {
         ArrayList<CapitalCityReport> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
@@ -471,32 +474,5 @@ public class SQLConnection {
         return ans;
     }
 
-    /**
-     * Gets city for the certain continent
-     * @param continent
-     * @return
-     */
-
-    public ArrayList<CapitalCityReport> getCapitalCityReport() {
-        ArrayList<CapitalCityReport> ans = new ArrayList<>();
-        try {
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect = "select Code, city.Name Capital, Continent , country.Name Name,city.Population Population from country JOIN city ON country.Capital = ID ORDER BY `Population` desc";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            while (rset.next()) {
-                CapitalCityReport capitalCityReport;
-                capitalCityReport = new CapitalCityReport(
-                        rset.getString("Capital"),
-                        rset.getString("Continent"),
-                        rset.getLong("Capital Population")
-                );
-                ans.add(capitalCityReport);
-            }
-        } catch (Exception err) {
-            System.out.println(err.getMessage());
-        }
-        return ans;
-    }
+   
 }
