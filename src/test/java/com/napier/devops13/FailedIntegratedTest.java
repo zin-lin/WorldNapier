@@ -2,6 +2,11 @@ package com.napier.devops13;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * FailedTestReport
+ * Author: Zin Lin Htun
+ * Modified by Joeseph Kettles
+ */
 public class FailedIntegratedTest {
     static SQLConnection connection = new SQLConnection();
     @Test
