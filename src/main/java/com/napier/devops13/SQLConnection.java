@@ -461,7 +461,7 @@ public class SQLConnection {
                 capitalCityReport = new CapitalCityReport(
                         rset.getString("Capital"),
                         rset.getString("Continent"),
-                        rset.getLong("Capital Population")
+                        rset.getLong("Population")
                 );
                 ans.add(capitalCityReport);
             }
@@ -490,7 +490,7 @@ public class SQLConnection {
                 capitalCityReport = new CapitalCityReport(
                         rset.getString("Capital"),
                         rset.getString("Continent"),
-                        rset.getLong("Capital Population")
+                        rset.getLong("Population")
                 );
                 ans.add(capitalCityReport);
             }
