@@ -455,7 +455,7 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CapitalCityReport> getCapitalCityReport(String capital) throws SQLException {
+    public ArrayList<CapitalCityReport> getCapitalCityReport(String capital) {
         ArrayList<CapitalCityReport> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
