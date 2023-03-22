@@ -5,6 +5,11 @@ public class CapitalCityReport {
     private long population;
     private String country;
 
+    public CapitalCityReport(String code, String capital, String continent, long capitalPopulation)
+    {
+
+    }
+
     public String getName() {
         return name;
     }
