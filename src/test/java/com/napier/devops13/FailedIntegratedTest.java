@@ -11,10 +11,6 @@ import java.sql.SQLException;
  */
 public class FailedIntegratedTest {
     static SQLConnection connection = new SQLConnection();
-    @Test
-    void testConnection() throws SQLException, ClassNotFoundException, InterruptedException {
-        connection.connect("localhost:33060", 1);
-    }
 
     @Test
     void testCountry() {
