@@ -84,6 +84,7 @@ public class UnitTest {
         cityReport.setPopulation(932323232);
         cityReport.getPopulation();
         cityReport.getName();
+        cityReport.toString();
     }
 
     @Test
@@ -117,6 +118,7 @@ public class UnitTest {
         populationReport.setNonCityPercentage(100);
         populationReport.getNonCityPercentage();
         populationReport.toString();
+
     }
 
 }
