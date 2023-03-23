@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Tests, for unit testing purposes of Java classes
  * Author: Zin Lin Htun
+ * modified by: Patrick Nwagulu and Maya Peretz
  * matric: 40542237
  */
 public class UnitTest {
@@ -61,6 +62,9 @@ public class UnitTest {
         app.main(new String[]{});
     }
 
+    /**
+     * test city model
+     */
     @Test
     void testCityReport(){
         CityReport cityReport = new CityReport("Name", "Country", "District", 232323232);
@@ -75,6 +79,9 @@ public class UnitTest {
         cityReport.toString();
     }
 
+    /**
+     * test capital city model
+     */
     @Test
     void testCapitalCityReport(){
         CapitalCityReport cityReport = new CapitalCityReport("Name", 232323232, "Country");
@@ -87,6 +94,9 @@ public class UnitTest {
         cityReport.toString();
     }
 
+    /**
+     * test country model
+     */
     @Test
     void testCountryReport(){
         CountryReport countryReport = new CountryReport("code", "name", "continent", "region", "capital", 999999999);
@@ -106,6 +116,9 @@ public class UnitTest {
         countryReport.toString();
     }
 
+    /**
+     * test population models
+     */
     @Test
     void testPopulationReport(){
         PopulationReport populationReport = new PopulationReport("Name", 23232323, 100, 0);

@@ -12,37 +12,66 @@ import java.sql.SQLException;
 public class FailedIntegratedTest {
     static SQLConnection connection = new SQLConnection();
 
+    /**
+     * Test country to see if a failed test report is created
+     */
     @Test
     void testCountry() {
         connection.getPopulationOfCountry("GBR");
     }
+
+    /**
+     *  Test city to see if a failed test report is created
+     */
     @Test
     void testCity() {
         connection.getPopulationOfCityID("NYC");
     }
+
+    /**
+     * Test district to see if a failed test report is created
+     */
     @Test
     void testDistrict() {
         connection.getPopulationOfDistrict("Limburg");
     }
+
+    /**
+     * test world to see if a failed test report is created
+     */
     @Test
     void testPopulation() {
         connection.getWorldPopulation();
     }
+
+    /**
+     * test region to see if a failed test report is created
+     */
     @Test
     void testRegion() {
         connection.getPopulationOfRegion("Carribean");
     }
 
+    /**
+     * test continent to see if a failed test report is created
+     */
     @Test
     void testContinent() {
         connection.getPopulationOfContinent("Africa");
     }
 
+    /**
+     * test disconnection to see if a failed test is created
+     * @throws SQLException
+     */
     @Test
     void testDisconnection() throws SQLException {
         connection.disconnect();
     }
 
+    /**
+     * Test modelled reports to see if a failed test report is created
+     */
     @Test
     void testCountryReports() {
         connection.getCountryContinentPopulationDesc("Europe");

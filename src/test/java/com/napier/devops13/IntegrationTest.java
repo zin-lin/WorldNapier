@@ -8,46 +8,86 @@ import java.sql.SQLException;
 public class IntegrationTest {
     static SQLConnection connection;
 
+    /**
+     * connection initialization.
+     * @throws Exception
+     */
     @BeforeAll
     static void setup() throws Exception {
         connection = new SQLConnection();
     }
+
+    /**
+     * testing connecction
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws InterruptedException
+     */
     @Test
     void testConnection() throws SQLException, ClassNotFoundException, InterruptedException {
         connection.connect("localhost:33060", 30000);
     }
 
+    /**
+     * test country population report
+     */
     @Test
     void testCountry() {
         connection.getPopulationOfCountry("GBR");
     }
+
+    /**
+     * test city population report
+     */
     @Test
     void testCity() {
         connection.getPopulationOfCityID("NYC");
     }
+
+    /**
+     * test district population report
+     */
     @Test
     void testDistrict() {
         connection.getPopulationOfDistrict("Limburg");
     }
+
+    /**
+     * test world population report
+     */
     @Test
     void testPopulation() {
         connection.getWorldPopulation();
     }
+
+    /**
+     * test region population report
+     */
     @Test
     void testRegion() {
         connection.getPopulationOfRegion("Carribean");
     }
 
+    /**
+     * test continent population report
+     */
     @Test
     void testContinent() {
         connection.getPopulationOfContinent("Africa");
     }
 
+    /**
+     * test disconnecting from the database
+     * @throws SQLException
+     */
     @Test
     void testDisconnection() throws SQLException {
         connection.disconnect();
     }
 
+    /**
+     * test modelled reports
+     */
     @Test
     void testCountryReports() {
         connection.getCountryContinentPopulationDesc("Europe");
