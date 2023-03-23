@@ -52,7 +52,6 @@ public class SQLConnection {
 
     /**
      * get the total population of the world
-     *
      * @return ans, returns the total population of the world.
      */
     public PopulationReport getWorldPopulation() {
@@ -73,9 +72,10 @@ public class SQLConnection {
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }
+
         /**
          * Living in cities
-         * returns report of all people living in cities.
+         * returns report of percentage of all people living in cities.
          */
         try {
             Statement stmt = con.createStatement();
@@ -91,13 +91,16 @@ public class SQLConnection {
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }
+        /**
+         * calculate and return the percentage of people living in cities.
+         * since this is within the existing city report, the % of people living in cities will be 100.
+         */
         report = new PopulationReport(name, ans, percent, 100 - percent);
         return report;
     }
 
     /**
      * get Population of a particular country
-     *
      * @param code, specific code of country
      * @return ans, returns population of the particular country queried for.
      */
@@ -120,10 +123,8 @@ public class SQLConnection {
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }
-
         /**
-         * those living in cities
-         * returns population percentage of those living in cities.
+         * creates report of people living in cities from the given country.
          */
         try {
             Statement stmt = con.createStatement();
@@ -138,10 +139,10 @@ public class SQLConnection {
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }
-
-
+        /**
+         * gets the percentage of people living in cities from the given country.
+         */
         report = new PopulationReport(name, ans, percent, 100 - percent);
-
         return report;
     }
 
@@ -173,7 +174,7 @@ public class SQLConnection {
         }
 
         /**
-         * those living in cities
+         * gets those living in cities from the given continent.
          */
         try {
             Statement stmt = con.createStatement();
@@ -188,7 +189,9 @@ public class SQLConnection {
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }
-
+        /**
+         * retrieves the percentage of those living in cities for the given continent.
+         */
         report = new PopulationReport(name, ans, percent, 100 - percent);
         return report;
     }
@@ -220,7 +223,7 @@ public class SQLConnection {
         }
 
         /**
-         * those living in cities
+         * gets population of those living in cities within the specific region
          */
         try {
             Statement stmt = con.createStatement();
@@ -235,8 +238,10 @@ public class SQLConnection {
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }
+        /**
+         * gets percentage of people living in cities for that specific region
+         */
         report = new PopulationReport(region, ans, percent, 100 - percent);
-
         return report;
     }
 
@@ -263,6 +268,9 @@ public class SQLConnection {
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }
+        /**
+         * gets percentage of people living in cities, for... the city by ID. should always be 100%.
+         */
         report = new PopulationReport(name, ans, 100, 0);
         return report;
     }
@@ -290,13 +298,15 @@ public class SQLConnection {
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }
-        report = new PopulationReport(id, ans, 100, 0);
 
+        /**
+         * gets percentage of people living in cities for the district.
+         */
+        report = new PopulationReport(id, ans, 100, 0);
         return report;
     }
 
     /**
-     *
      * @return ans, returns a report for every country in the world, organised largest to smallest.
      */
     public ArrayList<CountryReport> getCountryWorldPopulationDesc() {
@@ -324,7 +334,6 @@ public class SQLConnection {
     }
 
     /**
-     *
      * @param continent, takes in a specific continent
      * @return ans, returns every country in that continent, in descending population size order.
      */
@@ -353,7 +362,6 @@ public class SQLConnection {
     }
 
     /**
-     *
      * @param region, takes in a specific region.
      * @return ans, returns list of continents, countries in that region, as well as the respective capital cities, and lists them in descending population size order.
      */
@@ -382,9 +390,8 @@ public class SQLConnection {
     }
 
     /**
-     *
-     * @param count, takes in a numeric value
-     * @return
+     * @param count, takes in a numeric value.
+     * @return ans, returns world population report in descending population value.
      */
     public ArrayList<CountryReport> getCountryWorldPopulationDesc(int count) {
         ArrayList<CountryReport> ans = new ArrayList<>();
@@ -411,6 +418,12 @@ public class SQLConnection {
         return ans;
     }
 
+    /**
+     *
+     * @param continent, takes in the continent name.
+     * @param count, used to index the information and make sure our loop does not continue forever.
+     * @return ans, returns the report of country population in descending order for a specific continent.
+     */
     public ArrayList<CountryReport> getCountryContinentPopulationDesc(String continent, int count) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
@@ -436,6 +449,12 @@ public class SQLConnection {
         return ans;
     }
 
+    /**
+     *
+     * @param region, takes parameter of region we want the populations for.
+     * @param count, indexes our information again so the loop is not infinite.
+     * @return ans, returns the report of country populations in descending order for the specified region.
+     */
     public ArrayList<CountryReport> getCountryRegionPopulationDesc(String region, int count) {
         ArrayList<CountryReport> ans = new ArrayList<>();
         try {
@@ -463,8 +482,8 @@ public class SQLConnection {
 
     /**
      * Gets city for the certain continent
-     * @param continent
-     * @return
+     * @param continent, takes the continent from which we want the city information.
+     * @return ans, returns the capital city report.
      */
 
     public ArrayList<CapitalCityReport> getCapitalCityContinentReport(String continent) {
@@ -492,8 +511,8 @@ public class SQLConnection {
 
     /**
      * Gets city for the world
-     * @param
-     * @return
+     * @param, no parameter specified, so we get all of the capital cities.
+     * @return ans, returns list of the capital city population reports.
      */
 
     public ArrayList<CapitalCityReport> getCapitalCityReport() {
@@ -521,8 +540,8 @@ public class SQLConnection {
 
     /**
      * Gets city for the certain region
-     * @param
-     * @return
+     * @param region, specifies the region we want the information for.
+     * @return ans, returns capital city reports for the specified region.
      */
 
     public ArrayList<CapitalCityReport> getCapitalCityRegionReport(String region) {
@@ -550,8 +569,9 @@ public class SQLConnection {
 
     /**
      * Gets city for the certain continent
-     * @param continent
-     * @return
+     * @param continent, specifies the continent for which we want the capital city reports.
+     * @param count, indexes our information in the loop.
+     * @return ans, returns the capital city reports for the specific continent we want in order.
      */
 
     public ArrayList<CapitalCityReport> getCapitalCityContinentReport(String continent, int count) {
@@ -580,8 +600,8 @@ public class SQLConnection {
 
     /**
      * Gets city for the world
-     * @param count,
-     * @return
+     * @param count, indexes our information in the loop.
+     * @return ans, returns the capital city population reports in descending population order.
      */
 
     public ArrayList<CapitalCityReport> getCapitalCityReport(int count) {
@@ -610,8 +630,9 @@ public class SQLConnection {
 
     /**
      * Gets city for the certain region
-     * @param region, count
-     * @return
+     * @param region, specifies the region for which we want the information.
+     * @param count, indexes our information in the loop.
+     * @return ans, returns capital city reports in descending order for the specified region.
      */
 
     public ArrayList<CapitalCityReport> getCapitalCityRegionReport(String region, int count) {
