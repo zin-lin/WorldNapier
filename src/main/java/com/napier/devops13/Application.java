@@ -2,6 +2,7 @@ package com.napier.devops13;
 
 import com.napier.devops13.models.CapitalCityReport;
 import com.napier.devops13.models.CountryReport;
+import com.napier.devops13.models.LinguisticData;
 import com.napier.devops13.models.PopulationReport;
 
 import java.sql.SQLException;
@@ -78,6 +79,14 @@ public class Application {
         app.printPopulationReportInFormat(connection.getPopulationOfRegion("Caribbean"));
         app.printPopulationReportInFormat(connection.getPopulationOfCityID("64"));
         app.printPopulationReportInFormat( connection.getPopulationOfDistrict("Limburg"));
+
+        System.out.println("\n\n");
+
+        for (LinguisticData country :connection.getLinguisticData("Chinese")){
+            System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
+        }
+
+
         connection.disconnect();
     }
 }

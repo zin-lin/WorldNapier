@@ -1,9 +1,6 @@
 package com.napier.devops13;
 
-import com.napier.devops13.models.CapitalCityReport;
-import com.napier.devops13.models.CityReport;
-import com.napier.devops13.models.CountryReport;
-import com.napier.devops13.models.PopulationReport;
+import com.napier.devops13.models.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -660,28 +657,24 @@ public class SQLConnection {
         return ans;
     }
 
+
     /**
-     *
+     * getTopNCityPopulationWorld
      * @param count
      * @return
      */
-    public ArrayList<CityReport> getCityPopulationWorldReport(int count) {
-        ArrayList<CityReport> ans = new ArrayList<>();
+    public ArrayList<String> getTopNCityPopulationWorld(int count) {
+        ArrayList<String> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID ORDER BY Population desc";
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID ORDER BY Population desc LIMIT "+ count;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             for (int a = 0; a < count; a++) {
                 rset.next();
-                CityReport cityReport;
-                cityReport = new CityReport(
-                        rset.getString("City"),
-                        rset.getString("Country"),
-                        rset.getString("District"),
-                        rset.getLong("Population")
-                );
+                String cityReport;
+                cityReport = rset.getString("");
                 ans.add(cityReport);
             }
         }
@@ -691,23 +684,24 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CityReport> getCityPopulationContinentReport(int count, String continent) {
-        ArrayList<CityReport> ans = new ArrayList<>();
+    /**
+     * getTopNCityPopulationContinent
+     * @param continent
+     * @param count
+     * @return
+     */
+    public ArrayList<String> getTopNCityPopulationContinent(String continent,int count) {
+        ArrayList<String> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE country.Continent = '" + continent + "' ORDER BY Population desc";
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE Continent = "+continent+ "ORDER BY Population desc LIMIT "+ count;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             for (int a = 0; a < count; a++) {
                 rset.next();
-                CityReport cityReport;
-                cityReport = new CityReport(
-                        rset.getString("City"),
-                        rset.getString("Country"),
-                        rset.getString("District"),
-                        rset.getLong("Population")
-                );
+                String cityReport;
+                cityReport = rset.getString("");
                 ans.add(cityReport);
             }
         }
@@ -717,23 +711,80 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CityReport> getCityPopulationRegionReport(int count, String region) {
-        ArrayList<CityReport> ans = new ArrayList<>();
+    /**
+     * getTopNCityPopulationCountry
+     * @param country
+     * @param count
+     * @return
+     */
+    public ArrayList<String> getTopNCityPopulationCountry(String country,int count) {
+        ArrayList<String> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE country.Region = '" + region + "' ORDER BY Population desc";
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE Country = "+country+ "ORDER BY Population desc LIMIT "+ count;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             for (int a = 0; a < count; a++) {
                 rset.next();
-                CityReport cityReport;
-                cityReport = new CityReport(
-                        rset.getString("City"),
-                        rset.getString("Country"),
-                        rset.getString("District"),
-                        rset.getLong("Population")
-                );
+                String cityReport;
+                cityReport = rset.getString("");
+                ans.add(cityReport);
+            }
+        }
+        catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+
+    }
+
+    /**
+     * getTopNCityPopulationRegion
+     * @param region
+     * @param count
+     * @return
+     */
+    public ArrayList<String> getTopNCityPopulationRegion(String region, int count) {
+        ArrayList<String> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE Region = "+region+ "ORDER BY Population desc LIMIT "+ count;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            for (int a = 0; a < count; a++) {
+                rset.next();
+                String cityReport;
+                cityReport = rset.getString("");
+                ans.add(cityReport);
+            }
+        }
+        catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+
+    }
+
+    /**
+     * getTopNCityPopulationDistrict
+     * @param district
+     * @param count
+     * @return
+     */
+    public ArrayList<String> getTopNCityPopulationDistrict(String district,int count) {
+        ArrayList<String> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE District = "+district+ "ORDER BY Population desc LIMIT "+ count;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            for (int a = 0; a < count; a++) {
+                rset.next();
+                String cityReport;
+                cityReport = rset.getString("");
                 ans.add(cityReport);
             }
         }
@@ -743,23 +794,22 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CityReport> getCityPopulationCountryReport(int count, String country) {
-        ArrayList<CityReport> ans = new ArrayList<>();
+
+    /**
+     * getTopCityPopulationWorld
+     * @return
+     */
+    public ArrayList<String> getTopCityPopulationWorld() {
+       ArrayList<String> ans = new ArrayList<>();
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE country.Name = '" + country + "' ORDER BY Population desc";
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID ORDER BY Population desc ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            for (int a = 0; a < count; a++) {
-                rset.next();
-                CityReport cityReport;
-                cityReport = new CityReport(
-                        rset.getString("City"),
-                        rset.getString("Country"),
-                        rset.getString("District"),
-                        rset.getLong("Population")
-                );
+            while (rset.next()) {
+                String cityReport;
+                cityReport = rset.getString("city.Name");
                 ans.add(cityReport);
             }
         }
@@ -769,24 +819,133 @@ public class SQLConnection {
         return ans;
     }
 
-    public ArrayList<CityReport> getCityPopulationDistrictReport(int count, String district) {
-        ArrayList<CityReport> ans = new ArrayList<>();
+    /**
+     * getTopCityPopulationContinent
+     * @param continent
+     * @return
+     */
+    public ArrayList<String> getTopCityPopulationContinent(String continent) {
+        ArrayList<String> ans = new ArrayList<String>();
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE District = '" + district + "' ORDER BY Population desc";
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country, Continent from city join country on country.Capital = ID WHERE Continent = "+continent+ "ORDER BY Population desc LIMIT ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            for (int a = 0; a < count; a++) {
-                rset.next();
-                CityReport cityReport;
-                cityReport = new CityReport(
-                        rset.getString("City"),
-                        rset.getString("Country"),
-                        rset.getString("District"),
-                        rset.getLong("Population")
-                );
+            while (rset.next()) {
+                String cityReport;
+                cityReport = rset.getString("city.Name");
                 ans.add(cityReport);
+            }
+        }
+        catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    /**
+     * getTopCityPopulationCountry
+     * @param country
+     * @return
+     */
+    public ArrayList<String> getTopCityPopulationCountry(String country) {
+        ArrayList<String> ans = new ArrayList<String>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE Country = "+country+ "ORDER BY Population desc LIMIT ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next()) {
+                String cityReport;
+                cityReport = rset.getString("city.Name");
+                ans.add(cityReport);
+            }
+        }
+        catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+
+    }
+
+    /**
+     * getTopCityPopulationRegion
+     * @param region
+     * @return
+     */
+    public ArrayList<String> getTopCityPopulationRegion(String region) {
+        ArrayList<String> ans = new ArrayList<String>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select city.Population, city.Name, Region, country.Name as Country from city join country on country.Capital = ID WHERE Region = "+region+ "ORDER BY Population desc LIMIT ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next()) {
+                String cityReport;
+                cityReport = rset.getString("city.Name");
+                ans.add(cityReport);
+            }
+        }
+        catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+
+    }
+
+    /**
+     * getTopCityPopulationDistrict
+     * @param district
+     * @return
+     */
+    public ArrayList<String> getTopCityPopulationDistrict(String district) {
+        ArrayList<String> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE District = "+district+ "ORDER BY Population desc LIMIT ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next()) {
+                String cityReport;
+                cityReport = rset.getString("city.Name");
+                ans.add(cityReport);
+            }
+        }
+        catch (Exception err) {
+            System.out.println(err.getMessage());
+        }
+        return ans;
+    }
+
+    public ArrayList<LinguisticData> getLinguisticData(String language ) {
+        ArrayList<LinguisticData> ans = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT \n" +
+                    "    country.Name, \n" +
+                    "    countrylanguage.Language, \n" +
+                    "     ((country.Population * countrylanguage.Percentage)/(SELECT SUM(Population) FROM country)) AS Population\n" +
+                    "FROM \n" +
+                    "    countrylanguage\n" +
+                    "JOIN \n" +
+                    "    country ON countrylanguage.CountryCode = country.Code\n" +
+                    "WHERE \n" +
+                    "    countrylanguage.Language = '"+ language +
+                    "' ORDER BY \n" +
+                    "    Population DESC;\n";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next()) {
+                String cityReport;
+                cityReport = rset.getString("Name");
+                double percentage = rset.getDouble("Population");
+
+                ans.add(new LinguisticData(cityReport, percentage)) ;
             }
         }
         catch (Exception err) {
