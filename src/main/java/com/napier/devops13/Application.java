@@ -81,44 +81,79 @@ public class Application {
         app.printPopulationReportInFormat( connection.getPopulationOfDistrict("Limburg"));
         System.out.println("\n\n");
 
-        connection.getTopNCityPopulationWorld(1);
-        connection.getTopNCityPopulationContinent("Europe",1);
-        connection.getTopNCityPopulationCountry("Palau", 1);
-        connection.getTopNCityPopulationRegion("Southern and Central Asia", 1);
-        connection.getTopNCityPopulationDistrict("Limburg", 1);
-        connection.getTopCityPopulationWorld();
+        for (String city : connection.getTopCityPopulationContinent("Europe") )
+            System.out.println(city);
+        System.out.println("\n\n");
+
+        System.out.println("Top 1 Populated cities in Palau");
+        for (String city :connection.getTopNCityPopulationCountry("Palau",1))
+            System.out.println("Top 1 Populated cities in Palau");
+        System.out.println("\n\n");
+
+        System.out.println("Top 1 Populated cities in Southern and Central Asia");
+        for (String city: connection.getTopNCityPopulationRegion("Southern and Central Asia",1))
+            System.out.println(city);
+        System.out.println("\n\n");
+
+        System.out.println("Top 1 Populated cities in Limburgh");
+        for (String city: connection.getTopNCityPopulationDistrict("Limburg",1))
+            System.out.println(city);
+        System.out.println("\n\n");
+
+        System.out.println("Top 1 Populated cities in the world");
+        for (String city: connection.getTopNCityPopulationWorld(1))
+            System.out.println(city);
+        System.out.println("\n\n");
+
+        System.out.println("Top Populated cities in Limburgh");
+        for (String city: connection.getTopCityPopulationWorld())
+            System.out.println(city);
+        System.out.println("\n\n");
+
         System.out.println("Top Populated cities in Europe");
         for (String city : connection.getTopCityPopulationContinent("Europe") )
             System.out.println(city);
+        System.out.println("\n\n");
 
         System.out.println("Top Populated cities in Palau");
         for (String city :connection.getTopCityPopulationCountry("Palau"))
             System.out.println("Top Populated cities in Palau");
+        System.out.println("\n\n");
 
         System.out.println("Top Populated cities in Southern and Central Asia");
         for (String city: connection.getTopCityPopulationRegion("Southern and Central Asia"))
             System.out.println(city);
+        System.out.println("\n\n");
 
         System.out.println("Top Populated cities in Limburgh");
         for (String city: connection.getTopCityPopulationDistrict("Limburg"))
             System.out.println(city);
+        System.out.println("\n\n");
 
         System.out.println("For English");
         for (LinguisticData country :connection.getLinguisticData("English")){
             System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
         }
+        System.out.println("\n\n");
+
         System.out.println("For Chinese");
         for (LinguisticData country :connection.getLinguisticData("Chinese")){
             System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
         }
+        System.out.println("\n\n");
+
         System.out.println("For Hindi");
         for (LinguisticData country :connection.getLinguisticData("Hindi")){
             System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
         }
+        System.out.println("\n\n");
+
         System.out.println("For Spanish");
         for (LinguisticData country :connection.getLinguisticData("Spanish")){
             System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
         }
+        System.out.println("\n\n");
+
         System.out.println("For Arabic");
         for (LinguisticData country :connection.getLinguisticData("Arabic")){
             System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
