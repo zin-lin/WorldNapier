@@ -3,7 +3,6 @@ services:
   # Application Dockerfile is in same folder which is .
   application:
     build: .
-    restart: always #app might quit since there is a throwable error
 
   # db is is db folder
   db:

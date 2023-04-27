@@ -104,13 +104,13 @@ public class IntegrationTest {
         connection.getCapitalCityReport(1);
         connection.getTopNCityPopulationWorld(1);
         connection.getTopNCityPopulationContinent("Europe",1);
-        connection.getTopNCityPopulationCountry("Great Britain ", 1);
-        connection.getTopNCityPopulationRegion("Carribean", 1);
+        connection.getTopNCityPopulationCountry("Palau", 1);
+        connection.getTopNCityPopulationRegion("Southern and Central Asia", 1);
         connection.getTopNCityPopulationDistrict("Limburg", 1);
         connection.getTopCityPopulationWorld();
         connection.getTopCityPopulationContinent("Europe");
-        connection.getTopCityPopulationCountry("Great Britain ");
-        connection.getTopCityPopulationRegion("Carribean");
+        connection.getTopCityPopulationCountry("Palau");
+        connection.getTopCityPopulationRegion("Southern and Central Asia");
         connection.getTopCityPopulationDistrict("Limburg");
         connection.getLinguisticData("English");
 
