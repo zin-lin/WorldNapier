@@ -83,6 +83,10 @@ public class Application {
         for (LinguisticData country :connection.getLinguisticData("Chinese")){
             System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
         }
+
+        System.out.println("\n\n");
+
+
         connection.disconnect();
     }
 }
