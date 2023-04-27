@@ -83,6 +83,17 @@ public class Application {
         for (LinguisticData country :connection.getLinguisticData("Chinese")){
             System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
         }
+        connection.getTopNCityPopulationWorld(1);
+        connection.getTopNCityPopulationContinent("Europe",1);
+        connection.getTopNCityPopulationCountry("Palau", 1);
+        connection.getTopNCityPopulationRegion("Carribean", 0);
+        connection.getTopNCityPopulationDistrict("Limburg", 1);
+        connection.getTopCityPopulationWorld();
+        connection.getTopCityPopulationContinent("Europe");
+        connection.getTopCityPopulationCountry("Palau");
+        connection.getTopCityPopulationRegion("Carribean");
+        connection.getTopCityPopulationDistrict("Limburg");
+        connection.getLinguisticData("English");
 
         System.out.println("\n\n");
 

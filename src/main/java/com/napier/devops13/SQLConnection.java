@@ -668,13 +668,13 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID ORDER BY Population desc LIMIT "+ count;
+            String strSelect = "select city.Population, city.Name as name, District, country.Name as Country from city join country on country.Code = CountryCode ORDER BY Population desc LIMIT "+ count;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             for (int a = 0; a < count; a++) {
                 rset.next();
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
@@ -695,13 +695,13 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE Continent = '"+continent+ "' ORDER BY Population desc LIMIT "+ count;
+            String strSelect = "select city.Population, city.Name as name, District, country.Name as Country from city join country on country.Code = CountryCode WHERE Continent = '"+continent+ "' ORDER BY Population desc LIMIT "+ count;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             for (int a = 0; a < count; a++) {
                 rset.next();
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
@@ -722,13 +722,13 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE Country = '"+country+ "' ORDER BY Population desc LIMIT "+ count;
+            String strSelect = "select city.Population, city.Name as name, District, country.Name as `Country` from city join country on country.Code = CountryCode WHERE country.Name = '"+country+ "' ORDER BY Population desc LIMIT "+ count;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             for (int a = 0; a < count; a++) {
                 rset.next();
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
@@ -750,13 +750,13 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE Region = '"+region+ "' ORDER BY Population desc LIMIT "+ count;
+            String strSelect = "select city.Population, city.Name as name, Region, country.Name as Country from city join country on country.Code = CountryCode WHERE Region = '"+region+ "' ORDER BY Population desc LIMIT " + count;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             for (int a = 0; a < count; a++) {
                 rset.next();
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
@@ -778,13 +778,13 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE District = '"+district+ "' ORDER BY Population desc LIMIT "+ count;
+            String strSelect = "select city.Population, city.Name as name, District, country.Name as Country from city join country on country.Code = CountryCode WHERE District = '"+district+ "' ORDER BY Population desc LIMIT "+ count;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             for (int a = 0; a < count; a++) {
                 rset.next();
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
@@ -804,12 +804,12 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID ORDER BY Population desc ";
+            String strSelect = "select city.Population, city.Name as name, District, country.Name as Country from city join country on country.Code = CountryCode ORDER BY Population desc ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next()) {
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
@@ -829,12 +829,12 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country, Continent from city join country on country.Capital = ID WHERE Continent = '"+continent+ "' ORDER BY Population desc ";
+            String strSelect = "select city.Population, city.Name as name, District, country.Name as Country, Continent from city join country on country.Code = CountryCode WHERE Continent = '"+continent+ "' ORDER BY Population desc ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next()) {
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
@@ -854,12 +854,12 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE Country = '"+country+ "' ORDER BY Population desc  ";
+            String strSelect = "select city.Population, city.Name as name, District, country.Name as Country from city join country on country.Code = CountryCode WHERE country.Name = '"+country+ "' ORDER BY Population desc  ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next()) {
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
@@ -880,12 +880,12 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, Region, country.Name as Country from city join country on country.Capital = ID WHERE Region = '"+region+ "' ORDER BY Population desc  ";
+            String strSelect = "select city.Population, city.Name as name, Region, country.Name as Country from city join country on country.Code = CountryCode WHERE Region = '"+region+ "' ORDER BY Population desc  ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next()) {
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
@@ -906,12 +906,12 @@ public class SQLConnection {
         try {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Capital = ID WHERE District = "+district+ "ORDER BY Population desc  ";
+            String strSelect = "select city.Population, city.Name, District, country.Name as Country from city join country on country.Code = CountryCode WHERE District = '"+district+ "' ORDER BY Population desc  ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next()) {
                 String cityReport;
-                cityReport = rset.getString("city.Name");
+                cityReport = rset.getString("name");
                 ans.add(cityReport);
             }
         }
