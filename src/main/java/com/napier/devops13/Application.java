@@ -80,20 +80,49 @@ public class Application {
         app.printPopulationReportInFormat(connection.getPopulationOfCityID("64"));
         app.printPopulationReportInFormat( connection.getPopulationOfDistrict("Limburg"));
         System.out.println("\n\n");
-        for (LinguisticData country :connection.getLinguisticData("Chinese")){
-            System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
-        }
+
         connection.getTopNCityPopulationWorld(1);
         connection.getTopNCityPopulationContinent("Europe",1);
         connection.getTopNCityPopulationCountry("Palau", 1);
-        connection.getTopNCityPopulationRegion("Carribean", 0);
+        connection.getTopNCityPopulationRegion("Southern and Central Asia", 1);
         connection.getTopNCityPopulationDistrict("Limburg", 1);
         connection.getTopCityPopulationWorld();
-        connection.getTopCityPopulationContinent("Europe");
-        connection.getTopCityPopulationCountry("Palau");
-        connection.getTopCityPopulationRegion("Carribean");
-        connection.getTopCityPopulationDistrict("Limburg");
-        connection.getLinguisticData("English");
+        System.out.println("Top Populated cities in Europe");
+        for (String city : connection.getTopCityPopulationContinent("Europe") )
+            System.out.println(city);
+
+        System.out.println("Top Populated cities in Palau");
+        for (String city :connection.getTopCityPopulationCountry("Palau"))
+            System.out.println("Top Populated cities in Palau");
+
+        System.out.println("Top Populated cities in Southern and Central Asia");
+        for (String city: connection.getTopCityPopulationRegion("Southern and Central Asia"))
+            System.out.println(city);
+
+        System.out.println("Top Populated cities in Limburgh");
+        for (String city: connection.getTopCityPopulationDistrict("Limburg"))
+            System.out.println(city);
+
+        System.out.println("For English");
+        for (LinguisticData country :connection.getLinguisticData("English")){
+            System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
+        }
+        System.out.println("For Chinese");
+        for (LinguisticData country :connection.getLinguisticData("Chinese")){
+            System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
+        }
+        System.out.println("For Hindi");
+        for (LinguisticData country :connection.getLinguisticData("Hindi")){
+            System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
+        }
+        System.out.println("For Spanish");
+        for (LinguisticData country :connection.getLinguisticData("Spanish")){
+            System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
+        }
+        System.out.println("For Arabic");
+        for (LinguisticData country :connection.getLinguisticData("Arabic")){
+            System.out.println(country.getLanguage() + " : "+ country.getPercentage() + "%");
+        }
 
         System.out.println("\n\n");
 

@@ -87,15 +87,14 @@ public class FailedIntegratedTest {
         connection.getCapitalCityContinentReport("Europe", 6);
         connection.getCapitalCityReport(1);
         connection.getTopNCityPopulationWorld(1);
-        connection.getTopNCityPopulationWorld(1);
         connection.getTopNCityPopulationContinent("Europe",1);
         connection.getTopNCityPopulationCountry("Palau", 1);
-        connection.getTopNCityPopulationRegion("Carribean", 0);
+        connection.getTopNCityPopulationRegion("Southern and Central Asia", 1);
         connection.getTopNCityPopulationDistrict("Limburg", 1);
         connection.getTopCityPopulationWorld();
         connection.getTopCityPopulationContinent("Europe");
         connection.getTopCityPopulationCountry("Palau");
-        connection.getTopCityPopulationRegion("Carribean");
+        connection.getTopCityPopulationRegion("Southern and Central Asia");
         connection.getTopCityPopulationDistrict("Limburg");
         connection.getLinguisticData("English");
     }
