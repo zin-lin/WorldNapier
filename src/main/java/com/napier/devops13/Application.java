@@ -1,9 +1,6 @@
 package com.napier.devops13;
 
-import com.napier.devops13.models.CapitalCityReport;
-import com.napier.devops13.models.CountryReport;
-import com.napier.devops13.models.LinguisticData;
-import com.napier.devops13.models.PopulationReport;
+import com.napier.devops13.models.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -81,52 +78,52 @@ public class Application {
         app.printPopulationReportInFormat( connection.getPopulationOfDistrict("Limburg"));
         System.out.println("\n\n");
 
-        for (String city : connection.getTopCityPopulationContinent("Europe") )
+        for (CityReport city : connection.getTopCityPopulationContinent("Europe") )
             System.out.println(city);
         System.out.println("\n\n");
 
         System.out.println("Top 1 Populated cities in Palau");
-        for (String city :connection.getTopNCityPopulationCountry("Palau",1))
-            System.out.println("Top 1 Populated cities in Palau");
+        for (CityReport city :connection.getTopNCityPopulationCountry("Palau",1))
+            System.out.println(city);
         System.out.println("\n\n");
 
         System.out.println("Top 1 Populated cities in Southern and Central Asia");
-        for (String city: connection.getTopNCityPopulationRegion("Southern and Central Asia",1))
+        for (CityReport city: connection.getTopNCityPopulationRegion("Southern and Central Asia",1))
             System.out.println(city);
         System.out.println("\n\n");
 
         System.out.println("Top 1 Populated cities in Limburgh");
-        for (String city: connection.getTopNCityPopulationDistrict("Limburg",1))
+        for (CityReport city: connection.getTopNCityPopulationDistrict("Limburg",1))
             System.out.println(city);
         System.out.println("\n\n");
 
         System.out.println("Top 1 Populated cities in the world");
-        for (String city: connection.getTopNCityPopulationWorld(1))
+        for (CityReport city: connection.getTopNCityPopulationWorld(1))
             System.out.println(city);
         System.out.println("\n\n");
 
         System.out.println("Top Populated cities in Limburgh");
-        for (String city: connection.getTopCityPopulationWorld())
+        for (CityReport city: connection.getTopCityPopulationWorld())
             System.out.println(city);
         System.out.println("\n\n");
 
         System.out.println("Top Populated cities in Europe");
-        for (String city : connection.getTopCityPopulationContinent("Europe") )
+        for (CityReport city : connection.getTopCityPopulationContinent("Europe") )
             System.out.println(city);
         System.out.println("\n\n");
 
         System.out.println("Top Populated cities in Palau");
-        for (String city :connection.getTopCityPopulationCountry("Palau"))
-            System.out.println("Top Populated cities in Palau");
+        for (CityReport city :connection.getTopCityPopulationCountry("Palau"))
+            System.out.println(city);
         System.out.println("\n\n");
 
         System.out.println("Top Populated cities in Southern and Central Asia");
-        for (String city: connection.getTopCityPopulationRegion("Southern and Central Asia"))
+        for (CityReport city: connection.getTopCityPopulationRegion("Southern and Central Asia"))
             System.out.println(city);
         System.out.println("\n\n");
 
         System.out.println("Top Populated cities in Limburgh");
-        for (String city: connection.getTopCityPopulationDistrict("Limburg"))
+        for (CityReport city: connection.getTopCityPopulationDistrict("Limburg"))
             System.out.println(city);
         System.out.println("\n\n");
 

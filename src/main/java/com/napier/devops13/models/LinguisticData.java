@@ -1,5 +1,9 @@
 package com.napier.devops13.models;
 
+/**
+ * Linguistic Data Model
+ * author: Maya Peretz
+ */
 public class LinguisticData {
 
     private String language;

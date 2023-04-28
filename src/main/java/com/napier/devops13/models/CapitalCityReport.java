@@ -1,10 +1,19 @@
 package com.napier.devops13.models;
-
+/**
+ * This class represents a Capital City Report
+ * author: Maya Peretz
+ */
 public class CapitalCityReport {
     private String name;
     private long population;
     private String country;
 
+    /**
+     * Constructor for the Capital City Report
+     * @param capital
+     * @param continent
+     * @param capitalPopulation
+     */
     public CapitalCityReport(String capital, String continent, long capitalPopulation)
     {
         this.name = capital;

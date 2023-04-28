@@ -1,5 +1,9 @@
 package com.napier.devops13.models;
 
+/**
+ * CityReport class
+ * author: Maya Peretz
+ */
 public class CityReport {
     private String name;
     private String country;
@@ -31,10 +35,26 @@ public class CityReport {
     public void setPopulation(long population) {
         this.population = population;
     }
+
+    /**
+     * Constructor
+     * @param name
+     * @param country
+     * @param district
+     * @param population
+     */
     public CityReport(String name, String country, String district, long population) {
         this.name = name;
         this.country = country;
         this.district = district;
         this.population = population;
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + name
+                + ", Country: " + country
+                + ", District: " + district
+                + ", Population: " + population;
     }
 }

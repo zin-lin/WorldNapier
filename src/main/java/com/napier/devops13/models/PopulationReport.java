@@ -2,6 +2,7 @@ package com.napier.devops13.models;
 
 /**
  * Population Report
+ * author: Maya Peretz
  */
 public class PopulationReport {
     private String name;
@@ -34,6 +35,13 @@ public class PopulationReport {
         return name;
     }
 
+    /**
+     * Population Report Constructor
+     * @param name
+     * @param population
+     * @param cityPercentage
+     * @param nonCityPercentage
+     */
     public PopulationReport(String name, long population, double cityPercentage, double nonCityPercentage) {
         this.name = name;
         this.population = population;

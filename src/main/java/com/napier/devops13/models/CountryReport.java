@@ -1,5 +1,9 @@
 package com.napier.devops13.models;
 
+/**
+ * CountryReport class
+ * author: Maya Peretz
+ */
 public class CountryReport {
     public String code;
     public String name;
@@ -46,6 +50,15 @@ public class CountryReport {
     }
 
 
+    /**
+     * Constructor
+     * @param code
+     * @param name
+     * @param continent
+     * @param region
+     * @param capital
+     * @param population
+     */
     public CountryReport(String code, String name, String continent, String region, String capital, long population) {
         this.code = code;
         this.name = name;
