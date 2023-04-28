@@ -5,6 +5,8 @@ import com.napier.devops13.models.CountryReport;
 import com.napier.devops13.models.LinguisticData;
 import com.napier.devops13.models.PopulationReport;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -38,7 +40,7 @@ public class Application {
      * Entrypoint:: docker app
      * @param args
      */
-    public static void main (String [] args) throws SQLException, ClassNotFoundException, InterruptedException {
+    public static void main (String [] args) throws SQLException, ClassNotFoundException, InterruptedException, IOException {
 
         Application app = new Application();
         SQLConnection connection = new SQLConnection();
@@ -47,6 +49,11 @@ public class Application {
         }else{
             connection.connect(args[0], Integer.parseInt(args[1]));
         }
+
+        FileWriter fileWriter = new FileWriter("frontend/app/data.json");
+        fileWriter.write(""); //replacing everything in the file
+        fileWriter.close();
+
 
 
         System.out.println("General Reports\n Country Reports");
